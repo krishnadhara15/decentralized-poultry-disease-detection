@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Decentralized Poultry Disease Detection</title>
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="hero">
+      <span class="hero-badge">Live System</span>
+      <h1>Decentralized Poultry Disease Detection</h1>
+      <p class="hero-tags">
+        <span>Computer Vision</span> · Deep Learning · Blockchain
+      </p>
+      <p class="hero-date">Mar 2024</p>
+      <ul class="hero-bullets">
+        <li>Integrated <strong>CNN-based disease detection</strong> for <strong>100,000+ birds</strong>, improving early identification and reducing outbreak rate by <strong>~50%</strong>.</li>
+        <li>Deployed vision model within a <strong>blockchain-backed system</strong> for tamper-proof health records and <strong>real-time alerting</strong>.</li>
+      </ul>
+    </header>
+
+    <section class="stats" id="stats">
+      <div class="stat-card">
+        <div class="label">Birds Monitored</div>
+        <div class="value">100,000+</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">Outbreak Reduction</div>
+        <div class="value ok">~50%</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">Ledger Blocks</div>
+        <div class="value" id="stat-blocks">—</div>
+      </div>
+      <div class="stat-card">
+        <div class="label">Chain Integrity</div>
+        <div class="value ok" id="stat-valid">—</div>
+      </div>
+    </section>
+
+    <div class="grid">
+      <section class="panel">
+        <h2>Diagnose Flock Image</h2>
+        <form id="diagnose-form">
+          <div class="form-group">
+            <label for="farm-id">Farm ID</label>
+            <input type="text" id="farm-id" name="farm_id" value="farm_alpha" required />
+          </div>
+          <div class="form-group">
+            <label>Bird / Flock Photo</label>
+            <div class="dropzone" id="dropzone">
+              <p>Drop image here or click to upload</p>
+              <input type="file" id="image" name="image" accept="image/*" required />
+              <img id="preview" alt="" hidden />
+            </div>
+          </div>
+          <button type="submit" class="btn" id="submit-btn">
+            Run CNN Diagnosis
+          </button>
+        </form>
+
+        <div class="result" id="result">
+          <div class="result-header">
+            <span class="result-label" id="result-label">—</span>
+            <span id="result-confidence">—</span>
+          </div>
+          <div class="confidence-bar">
+            <div class="confidence-fill" id="confidence-fill" style="width: 0%"></div>
+          </div>
+          <p class="meta" id="result-probs"></p>
+          <p class="meta" id="result-ledger"></p>
+          <div class="alert-banner" id="alert-banner"></div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Tamper-Proof Health Ledger</h2>
+        <p style="margin: 0 0 1rem; font-size: 0.85rem; color: var(--muted);">
+          <span class="status-dot ok" id="ledger-dot"></span>
+          <span id="ledger-status">Loading chain…</span>
+        </p>
+        <div class="ledger-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Farm</th>
+                <th>Label</th>
+                <th>Conf.</th>
+                <th>Alert</th>
+                <th>Hash</th>
+              </tr>
+            </thead>
+            <tbody id="ledger-body">
+              <tr><td colspan="6" style="color: var(--muted)">Loading…</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+
+    <p class="footer-note">
+      Classification (whole-image) · OpenCV preprocess · SHA-256 append-only ledger · Alert threshold <span id="threshold-display">0.75</span>
+    </p>
+  </div>
+  <script src="/static/js/app.js"></script>
+</body>
+</html>
